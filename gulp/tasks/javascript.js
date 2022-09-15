@@ -1,7 +1,7 @@
 import webpack from 'webpack-stream'
 
 export const js = () => {
-  return config.gulp.src(config.path.source.js, { sourcemaps: true })
+  return config.gulp.src(config.path.source.js, { sourcemaps: config.isDev })
     .pipe(config.plugins.plumber(
       config.plugins.notify.onError({
         title: "JS",
@@ -9,9 +9,9 @@ export const js = () => {
       }))
     )
     .pipe(webpack({
-      mode: 'development',
+      mode: config.isBuild ? 'production' : 'development',
       output: {
-        filename: 'index.js'
+        filename: config.isBuild ? 'index.min.js' : 'index.js'
       }
     }))
     .pipe(config.gulp.dest(config.path.build.js))

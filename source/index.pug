@@ -1,7 +1,11 @@
+- const script = config.isBuild ? 'js/index.min.js' : 'js/index.js' 
+- const style = config.isBuild ? 'css/index.min.css' : 'css/index.css'
+
+
 doctype html 
 html(lang='en')
   head 
-    link(rel="stylesheet", href="css/index.min.css")
+    link(rel="stylesheet", href=style)
     title test bundle 
   body
 
@@ -15,4 +19,4 @@ html(lang='en')
 
     include pug/footer
 
-    script(src="js/index.js")
+    script(src=script)

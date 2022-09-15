@@ -9,7 +9,7 @@ import queries from 'gulp-group-css-media-queries' // Групировка ме�
 import rename from 'gulp-rename'
 
 export const sass = () => {
-  return config.gulp.src(config.path.source.sass, { sourcemaps: true })
+  return config.gulp.src(config.path.source.sass, { sourcemaps: config.isDev })
     .pipe(config.plugins.plumber(
       config.plugins.notify.onError({
         title: "SASS",
@@ -20,17 +20,47 @@ export const sass = () => {
     .pipe($sass({
       outputStyle: 'expanded'
     }))
-    .pipe(queries())
-    .pipe(autoprefixer({
-      grid: true,
-      overrideBrowserslist: ["last 3 versions"],
-      cascade: true
-    }))
-    .pipe(config.gulp.dest(config.path.build.css))
-    .pipe(minimizer())
-    .pipe(rename({
-      extname: '.min.css'
-    }))
-    .pipe(config.gulp.dest(config.path.build.css))
+    .pipe(
+      config.plugins.if(
+        config.isBuild,
+        queries()
+      )
+    )
+    .pipe(
+      config.plugins.if(
+        config.isBuild,
+        autoprefixer({
+          grid: true,
+          overrideBrowserslist: ["last 3 versions"],
+          cascade: true
+        })
+      )
+    )
+    .pipe(
+      config.plugins.if(
+        config.isDev,
+        config.gulp.dest(config.path.build.css)
+      )
+    )
+    .pipe(
+      config.plugins.if(
+        config.isBuild,
+        minimizer()
+      )
+    )
+    .pipe(
+      config.plugins.if(
+        config.isBuild,
+        rename({
+          extname: '.min.css'
+        })
+      )
+    )
+    .pipe(
+      config.plugins.if(
+        config.isBuild,
+        config.gulp.dest(config.path.build.css)
+      )
+    )
     .pipe(config.plugins.browsersync.stream())
 }

@@ -35,7 +35,7 @@ export const ttf_woff = () => {
 		.pipe(config.gulp.dest(`${config.path.build.fonts}`));
 }
 
-export const fonts = () => {
+export const font = () => {
 	let fontsFile = `${config.path.sourceFolder}/sass/fonts.sass`;
 	fs.readdir(config.path.build.fonts, function (err, fontsFiles) {
 		if (fontsFiles) {
@@ -71,10 +71,10 @@ export const fonts = () => {
 					}
 				}
 			} else {
-				console.log("Файл scss/fonts.scss уже существует. Для обновления файла нужно его удалить!");
+				console.log("Файл sass/fonts.sass уже существует. Для обновления файла нужно его удалить!");
 			}
 		} else {
-      console.log('Файлов нету!')
+      console.log('Локальных шрифтов не существует!')
     }
 	});
 

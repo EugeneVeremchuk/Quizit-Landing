@@ -11,14 +11,19 @@ export const img = () => {
     )
     .pipe(webp())
     .pipe(config.plugins.newer(config.path.build.images))
-    .pipe(imagemin({
-      progressive: true,
-      svgoPlugins: [{ removeViewBox: false }],
-      interlaced: true,
-      optimizationLevel: 3 // 0 to 7
-    }))
+    .pipe(
+      config.plugins.if(
+        config.isBuild,
+        imagemin({
+          progressive: true,
+          svgoPlugins: [{ removeViewBox: false }],
+          interlaced: true,
+          optimizationLevel: 3 // 0 to 7
+        })
+      )
+    )
     .pipe(config.gulp.dest(config.path.build.images))
     .pipe(config.gulp.src(config.path.source.svg))
-		.pipe(config.gulp.dest(config.path.build.images))
+    .pipe(config.gulp.dest(config.path.build.images))
     .pipe(config.plugins.browsersync.stream())
 }

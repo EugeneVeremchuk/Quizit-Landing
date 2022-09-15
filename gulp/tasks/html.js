@@ -10,23 +10,28 @@ export const html = () => {
 			}))
 		)
 		.pipe(pug({
-			pretty: true,
+			pretty: config.isDev,
 			verbose: true
 		}))
-		.pipe(versionNumber({
-			'value': '%DT%',
-			'append': {
-				'key': '_v',
-				'cover': 0,
-				'to': [
-					'css',
-					'js',
-				]
-			},
-			'output': {
-				'file': 'gulp/version.json'
-			}
-		}))
+		.pipe(
+			config.plugins.if(
+				config.isBuild,
+				versionNumber({
+					'value': '%DT%',
+					'append': {
+						'key': '_v',
+						'cover': 0,
+						'to': [
+							'css',
+							'js',
+						]
+					},
+					'output': {
+						'file': 'gulp/version.json'
+					}
+				})
+			)
+		)
 		.pipe(config.plugins.replace(/@img\//g, 'images/'))
 		.pipe(config.gulp.dest(config.path.build.html))
 		.pipe(config.plugins.browsersync.stream())

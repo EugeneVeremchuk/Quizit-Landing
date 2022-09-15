@@ -4,7 +4,9 @@ import server from './gulp/config/server.js'
 import plugins from './gulp/config/plugins.js'
 
 global.config = {
-  path, gulp, plugins
+  path, gulp, plugins,
+  isBuild: process.argv.includes('--build'),
+  isDev: !process.argv.includes('--build')
 }
 
 import { copy } from './gulp/tasks/copy.js'
@@ -13,7 +15,7 @@ import { html } from './gulp/tasks/html.js'
 import { sass } from './gulp/tasks/sass.js'
 import { js } from './gulp/tasks/javascript.js'
 import { img } from './gulp/tasks/images.js'
-import { otf_ttf, ttf_woff, fonts } from './gulp/tasks/fonts.js'
+import { otf_ttf, ttf_woff, font } from './gulp/tasks/fonts.js'
 
 function watcher() {
   gulp.watch(path.watch.files, copy)
@@ -23,11 +25,14 @@ function watcher() {
 }
 
 const observer = gulp.parallel(watcher, server)
-const fonts = gulp.series(otf_ttf, ttf_woff, fonts)
+const fonts = gulp.series(otf_ttf, ttf_woff, font)
 const tasks = gulp.series(fonts, gulp.parallel(copy, html, sass, js, img))
 
 const dev = gulp.series(clean, tasks, observer)
+const build = gulp.series(clean, tasks)
 
-gulp.task('default', dev)
+export { dev }
+export { build }
+
 
 
