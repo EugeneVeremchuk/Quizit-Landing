@@ -1,22 +1,13 @@
 - const script = config.isBuild ? 'js/index.min.js' : 'js/index.js' 
 - const style = config.isBuild ? 'css/index.min.css' : 'css/index.css'
 
-
 doctype html 
 html(lang='en')
   head 
-    link(rel="stylesheet", href=style)
-    title test bundle 
+    include pug/head
+    title Gulp  
   body
+    .center 
+      h1 Gulp Bundle
+      .container 
 
-    include pug/header
-
-    h1 Hello, World 
-    img(src="@img/cursor.webp", alt="cursor")
-    .remark
-      p all gona be great!
-    img(src="@img/svg-primer.svg", alt="primer")
-
-    include pug/footer
-
-    script(src=script)

@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "gulp dev",
-    "build": "gulp build --build"
+    "build": "gulp build --build",
+    "zip": "gulp archive --build"
   },
   "author": "EugeneVeremchuk",
   "license": "ISC",
@@ -30,6 +31,7 @@
     "gulp-ttf2woff2": "^4.0.1",
     "gulp-version-number": "^0.2.4",
     "gulp-webp": "^4.0.1",
+    "gulp-zip": "^5.1.0",
     "sass": "^1.54.9",
     "webpack": "^5.74.0",
     "webpack-stream": "^7.0.0"

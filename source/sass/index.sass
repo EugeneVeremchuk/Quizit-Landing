@@ -1,11 +1,16 @@
-@import fonts.sass
+@use "sass:math"
+@import mixins.sass
 
-$color: red
+.center
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  height: 100vh
+  width: 100%
+  font-size: adap(2)
 
-body
-  font-family: TTTrailers
-  background: black
-  color: $color
-  h1
-    color: white
-    display: block
+.container
+  height: adap(2)
+  width: adap(2)
+  background-color: red

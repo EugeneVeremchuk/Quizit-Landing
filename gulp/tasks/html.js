@@ -33,6 +33,7 @@ export const html = () => {
 			)
 		)
 		.pipe(config.plugins.replace(/@img\//g, 'images/'))
+		.pipe(config.plugins.replace(/@svg\//g, 'images/svg/'))
 		.pipe(config.gulp.dest(config.path.build.html))
 		.pipe(config.plugins.browsersync.stream())
 }
