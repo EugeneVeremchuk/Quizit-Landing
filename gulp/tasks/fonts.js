@@ -36,7 +36,7 @@ export const ttf_woff = () => {
 }
 
 export const font = () => {
-	let fontsFile = `${config.path.sourceFolder}/sass/fonts.sass`;
+	let fontsFile = `${config.path.sourceFolder}/sass/fonts/fonts.sass`;
 	fs.readdir(config.path.build.fonts, function (err, fontsFiles) {
 		if (fontsFiles) {
 			if (!fs.existsSync(fontsFile)) {

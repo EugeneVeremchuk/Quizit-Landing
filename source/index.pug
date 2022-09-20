@@ -1,5 +1,4 @@
-- const script = config.isBuild ? 'js/index.min.js' : 'js/index.js' 
-- const style = config.isBuild ? 'css/index.min.css' : 'css/index.css'
+include pug/auto
 
 doctype html 
 html(lang='en')
@@ -7,7 +6,8 @@ html(lang='en')
     include pug/head
     title Gulp  
   body
-    .center 
-      h1 Gulp Bundle
-      .container 
-
+    .wrapper
+      include pug/header
+      main.page
+        h1 content of site
+      include pug/footer
