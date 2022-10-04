@@ -1,0 +1,36 @@
+#Sound *
+  fill: none
+  stroke: #000
+  stroke-width: 20
+  stroke-linecap: round
+
+  transition: all .1s ease-in-out 0s
+
+#on,
+#off,
+#speaker,
+#innerRing,
+#condition
+  fill: #000
+  stroke-width: 0
+
+#line
+  transform: translateY(8px)
+  stroke-width: 17
+  stroke-dasharray: 221.2236785888672
+
+.line
+  stroke-dashoffset: -221.2236785888672
+
+#ringsMask
+  transform: translateX(70%)
+
+.sound.on:hover
+  & #outerRing
+    cx: 90
+  & #innerRing
+    cx: 80
+
+.sound.off:hover
+  & #line
+    stroke-dashoffset: -221.2236785888672

@@ -1,0 +1,48 @@
+.menu
+  .menu__button
+    width: rem(150)
+    height: rem(150)
+
+    position: relative
+    &-wrapper
+      width: 100%
+      height: 100%
+
+      position: relative
+      z-index: 1
+
+      display: flex
+      justify-content: center
+      align-items: center
+
+      background-color: var(--dark)
+      border-radius: 50%
+      border: var(--color) solid $buttonBorder
+      transition: all .1s ease-in-out 0s
+      .burger
+        position: relative
+        width: rem(80)
+        height: rem(90)
+        &> #Burger
+          width: 100%
+          height: 100%
+          fill: var(--color)
+          margin: -5px 0px 0px 0px
+    &-border
+      position: absolute
+      top: 5px
+      left: 5px
+      z-index: 0
+
+      width: 100%
+      height: 100%
+
+      border-radius: 50%
+      background-color: var(--color)
+
+
+.hover 
+  transform: translate(3px, 3px)
+
+.active 
+  transform: translate(5px, 5px)

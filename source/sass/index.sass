@@ -3,25 +3,56 @@
 // Подключение миксинов ================================================
 @import "base/mixins"
 
-// Подключение шрифтов ================================================
-//&display=swap - добавить при подключении через плагин
-
 // Подключить если есть локальные файлы шрифтов =====================
-// @import "fonts/fonts"
+@import "fonts/fonts"
 
 // Подключение иконочных шрифтов ====================================
-//@import "fonts/icons"
+@import "fonts/icons"
 
 // =====================================================================
 // Настройки шаблона ================================================
 // ==================================================================
 
 // Шрифт по умолчанию =============================================
-$fontFamily: ""
+$fontFamily: "TTOctosquares"
 $fontSize: rem(14) // где 14(px) - размер шрифта по умолчанию из макета
 
 // Основные цвета
-$mainColor: #000 // Цвет шрифта по умолчанию
+$dark: #2C3033
+$light: #EDECE7
+
+$mainColor: $dark // Цвет шрифта по умолчанию
+
+$blue: #47568c
+$red: #f03800
+$yellow: #fed843
+$lightBlue: #6aa9ff
+
+// GridSpacing
+$frameBorder: 30px
+$photoBorder: 10px
+$buttonBorder: 7px
+$titleSpace: 32px
+
+// Typography
+$mainTitle: 64px
+$textButton: 48px
+$text: 40px
+
+// Development
+$burgerMask: none
+$themeMask: none
+$soundMask: none
+
+// CSS переменые ===================================================
+
+:root
+  --mask-burger: #{$burgerMask}
+  --mask-theme: #{$themeMask}
+  --mask-sound: #{$soundMask}
+  --color: #{$red}
+  --dark: #{$dark}
+  --light: #{$light}
 
 // Настройки адаптивной сетки ====================================
 
@@ -29,26 +60,12 @@ $mainColor: #000 // Цвет шрифта по умолчанию
 $minWidth: 320
 // Ширина полотна (макета)
 $maxWidth: 1920
-// Ширина ограничивающего контейнера (0 = нет ограничения)
-$maxWidthContainer: 1170
-// Общий отступ у контейнера
-// (30 = по 15px слева и справа, 0 = нет отступа)
-$containerPadding: 30
-
-// Ширина срабатывания первого брейкпоинта
-$containerWidth: $maxWidthContainer + $containerPadding
 
 // Брейк-поинты
-$pc: em($containerWidth) // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
+$pc: em(1366.98) // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
 $tablet: em(991.98) // Планшеты, некоторые телефоны в горизонтальном положении
 $mobile: em(767.98) // Телефоны L
 $mobileSmall: em(479.98) // Телефоны S
-
-// Тип адаптива:
-// 1 = отзывчивость (у контейнера нет брейкпоинтов),
-// 2 = по брейк-поинтам (контейнер меняет свою ширину по брейк-поинтам)
-
-$responsiveType: 2
 
 // ==================================================================
 // ==================================================================
@@ -57,7 +74,6 @@ $responsiveType: 2
 @import "base/null"
 
 // Стили тега BODY ================================================
-
 body
   .lock
     overflow: hidden
@@ -66,57 +82,52 @@ body
   .loaded
     text-decoration: none
 
-// Оболочка wrapper =============================================
-.wrapper
-  min-height: 100%
-  display: flex
-  flex-direction: column
-  overflow: hidden
-  > main
-    flex: 1 1 auto
-  > *
-    min-width: 0
-
-// Ограничивающий контейнер ====================================
-
-/*
-  (i) Стили будут применяться ко 
-  всем классам содержащим *__container
-  Например header__container, main__container и т.д.
-
-@if ($responsiveType==1)
-  [class*="__container"]
-    @if ($maxWidthContainer>0)
-      max-width: rem($maxWidthContainer)
-      box-sizing: content-box
-      margin: 0 auto
-    @if ($containerPadding>0)
-      padding: 0 rem(math.div($containerPadding, 2))
-
-@else
-  [class*="__container"]
-    margin: 0 auto
-    @if ($maxWidthContainer>0)
-      max-width: rem($maxWidthContainer)
-      box-sizing: content-box
-    @else
-      @if ($containerPadding>0)
-        padding: 0 rem(math.div($containerPadding, 2))
-
-    @media (max-width: $pc)
-      max-width: rem(970)
-
-    @media (max-width: $tablet)
-      max-width: rem(750)
-
-    @media (max-width: $mobile)
-      max-width: none
-      @if ($containerPadding>0 and $maxWidthContainer>0)
-        padding: 0 rem(math.div($containerPadding, 2))
-
 // Подключение стилей отдельных блоков
-@import "parts/header"
-@import "parts/footer"
 
-// Подключение стилей отдельных страниц
-@import "_home"
+// Анимации icons
+$colors: 'blue' $blue, 'red' $red, 'yellow' $yellow, 'lightBlue' $lightBlue
+@each $color, $hex in $colors
+  .cls-#{$color}
+    fill: $hex
+
+.cover
+  width: 100%
+  height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+
+@import components/menu
+
+@import animation/icons/burger
+
+// .burger,
+// .theme
+//   position: relative
+//   width: 300px
+//   height: 300px
+//   &> svg
+//     width: 100%
+//     height: 100%
+
+// .sound
+//   position: relative
+//   width: 320px
+//   height: 300px
+//   &> svg
+//     width: 100%
+//     height: 100%
+
+$masks: 'burger', 'theme', 'sound'
+@each $mask in $masks
+  .mask-#{$mask}
+    position: absolute
+    top: 0
+    left: 0
+    z-index: 2
+    width: 100%
+    height: 100%
+    display: var(--mask-#{$mask})
+
+@import animation/icons/theme
+@import animation/icons/sound

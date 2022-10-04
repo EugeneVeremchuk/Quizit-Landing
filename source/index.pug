@@ -1,13 +1,23 @@
-include pug/auto
+include pug/auto  
+include pug/animation/icons
 
 doctype html 
 html(lang='en')
   head 
     include pug/head
-    title Gulp  
+    title Quizit  
   body
-    .wrapper
-      include pug/header
-      main.page
-        h1 content of site
-      include pug/footer
+    .cover 
+      .menu 
+        button.menu__button
+          .menu__button-wrapper
+            +Burger
+          .menu__button-border
+          .mask-burger
+
+
+        
+
+
+      //- +Theme
+      //- +Sound

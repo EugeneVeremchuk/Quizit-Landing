@@ -1,0 +1,17 @@
+#top,
+#bottom,
+#cross
+  transition: all .1s ease-in-out 0s
+
+.menu__button:hover .burger.open
+  & #top
+    transform: translateY(7px)
+  & #bottom
+    transform: translateY(-5px)
+
+.menu__button:hover .burger.close
+  & #cross
+    transform-origin: 50% 50%
+    transform: scale(1.05)
+  
+  
