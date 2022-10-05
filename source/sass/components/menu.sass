@@ -1,5 +1,4 @@
 
-  
 @mixin size($width, $height)
   width: $width
   height: $height
@@ -25,7 +24,7 @@
       border-radius: 50%
       border: var(--color) solid $buttonBorder
 
-      transition: all .2s $bounce 0s
+      // transition: transform .2s $bounce 0s
       .burger
         position: relative
 
@@ -64,7 +63,7 @@
     left: 5px
     z-index: 0
 
-    transition: all .3s $bounce 0s
+    // transition: height .3s $bounce 0s
     &-wrapper
       width: 100%
       height: 100%
@@ -78,8 +77,6 @@
       border: var(--color) solid $buttonBorder
       border-radius: 100px
       background-color: var(--dark)
-
-      transition: all .1s ease-in-out 0s
       .element
         flex: 0 0 33.333%
       .theme
