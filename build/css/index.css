@@ -147,6 +147,9 @@ h6 {
   font-size: inherit;
 }
 
+body {
+  background-color: #2C3033;
+}
 body .lock {
   overflow: hidden;
   touch-action: none;
@@ -180,44 +183,131 @@ body .loaded {
   align-items: center;
 }
 
-.menu .menu__button {
-  width: 9.375rem;
-  height: 9.375rem;
+.menu {
   position: relative;
 }
-.menu .menu__button-wrapper {
+.menu__button {
+  width: calc((1vw + 1vh) * 4);
+  height: calc((1vw + 1vh) * 4);
+  position: relative;
+}
+.menu__button-wrapper {
   width: 100%;
   height: 100%;
   position: relative;
-  z-index: 1;
+  z-index: 501;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--dark);
   border-radius: 50%;
-  border: var(--color) solid 7px;
-  transition: all 0.1s ease-in-out 0s;
+  border: var(--color) solid calc((1vw + 1vh) * 0.3);
+  transition: all 0.2s cubic-bezier(0.47, 1.64, 0.41, 0.8) 0s;
 }
-.menu .menu__button-wrapper .burger {
+.menu__button-wrapper .burger {
   position: relative;
-  width: 5rem;
-  height: 5.625rem;
+  width: 65%;
+  height: 65%;
 }
-.menu .menu__button-wrapper .burger > #Burger {
+.menu__button-wrapper .burger > #Burger {
   width: 100%;
   height: 100%;
+  margin: -2px 0px 0px 0px;
   fill: var(--color);
-  margin: -5px 0px 0px 0px;
 }
-.menu .menu__button-border {
+.menu__button-border {
   position: absolute;
-  top: 5px;
-  left: 5px;
-  z-index: 0;
+  top: calc((1vw + 1vh) * 0.2);
+  left: calc((1vw + 1vh) * 0.2);
+  z-index: 100;
   width: 100%;
   height: 100%;
   border-radius: 50%;
   background-color: var(--color);
+}
+@media (max-width: 47.99875em) {
+  .menu__button-border {
+    top: 2px;
+    left: 2px;
+  }
+}
+@media (max-width: 29.99875em) {
+  .menu__button-border {
+    top: 1px;
+    left: 1px;
+  }
+}
+.menu__interface {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 0;
+  transition: all 0.3s cubic-bezier(0.47, 1.64, 0.41, 0.8) 0s;
+}
+.menu__interface-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 500;
+  border: var(--color) solid calc((1vw + 1vh) * 0.3);
+  border-radius: 100px;
+  background-color: var(--dark);
+  transition: all 0.1s ease-in-out 0s;
+}
+.menu__interface-wrapper .element {
+  flex: 0 0 33.333%;
+}
+.menu__interface-wrapper .theme {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu__interface-wrapper .theme > #Theme {
+  width: 65%;
+  height: 65%;
+  fill: var(--color);
+}
+.menu__interface-wrapper .sound {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu__interface-wrapper .sound > #Sound {
+  width: 65%;
+  height: 65%;
+  fill: var(--color);
+  stroke: var(--color);
+}
+.menu__interface-wrapper .sound.off {
+  transform: translateX(calc((1vw + 1vh) * 0.3));
+}
+.menu__interface-border {
+  position: absolute;
+  top: calc((1vw + 1vh) * 0.15);
+  left: calc((1vw + 1vh) * 0.15);
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  border-radius: 100px;
+  background-color: var(--color);
+}
+
+.hide {
+  width: calc((1vw + 1vh) * 4);
+  height: 0rem;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.show {
+  width: calc((1vw + 1vh) * 4);
+  height: calc((1vw + 1vh) * 12);
+  opacity: 1;
+  visibility: visible;
 }
 
 .hover {
@@ -250,7 +340,7 @@ body .loaded {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 1000;
   width: 100%;
   height: 100%;
   display: var(--mask-burger);
@@ -260,7 +350,7 @@ body .loaded {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 1000;
   width: 100%;
   height: 100%;
   display: var(--mask-theme);
@@ -270,7 +360,7 @@ body .loaded {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 1000;
   width: 100%;
   height: 100%;
   display: var(--mask-sound);
@@ -298,9 +388,13 @@ body .loaded {
   transform: rotate(90deg);
 }
 
-#Sound * {
+.sound {
+  transition: all 0.2s ease-in-out 0s;
+}
+
+#line,
+#outerRing {
   fill: none;
-  stroke: #000;
   stroke-width: 20;
   stroke-linecap: round;
   transition: all 0.1s ease-in-out 0s;
@@ -311,7 +405,6 @@ body .loaded {
 #speaker,
 #innerRing,
 #condition {
-  fill: #000;
   stroke-width: 0;
 }
 

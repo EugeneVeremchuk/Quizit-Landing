@@ -31,7 +31,7 @@ $lightBlue: #6aa9ff
 // GridSpacing
 $frameBorder: 30px
 $photoBorder: 10px
-$buttonBorder: 7px
+$buttonBorder: adaptive(.3)
 $titleSpace: 32px
 
 // Typography
@@ -43,6 +43,14 @@ $text: 40px
 $burgerMask: none
 $themeMask: none
 $soundMask: none
+
+// ZIndex
+$high: 1000
+$mid: 500
+$low: 100
+
+// Custom transition
+$bounce: cubic-bezier(.47,1.64,.41,.8)
 
 // CSS переменые ===================================================
 
@@ -75,6 +83,7 @@ $mobileSmall: em(479.98) // Телефоны S
 
 // Стили тега BODY ================================================
 body
+  background-color: $dark
   .lock
     overflow: hidden
     touch-action: none
@@ -98,25 +107,7 @@ $colors: 'blue' $blue, 'red' $red, 'yellow' $yellow, 'lightBlue' $lightBlue
   align-items: center
 
 @import components/menu
-
 @import animation/icons/burger
-
-// .burger,
-// .theme
-//   position: relative
-//   width: 300px
-//   height: 300px
-//   &> svg
-//     width: 100%
-//     height: 100%
-
-// .sound
-//   position: relative
-//   width: 320px
-//   height: 300px
-//   &> svg
-//     width: 100%
-//     height: 100%
 
 $masks: 'burger', 'theme', 'sound'
 @each $mask in $masks
@@ -124,7 +115,7 @@ $masks: 'burger', 'theme', 'sound'
     position: absolute
     top: 0
     left: 0
-    z-index: 2
+    z-index: $high
     width: 100%
     height: 100%
     display: var(--mask-#{$mask})

@@ -27,14 +27,14 @@ function themeAnimation(event) {
 
   switch (condition) {
     case 'dark':
-      burger.classList.remove('dark')
-      burger.classList.add('light')
+      theme.classList.remove('dark')
+      theme.classList.add('light')
       condition = 'light'
       animation()
       break
     case 'light':
-      burger.classList.remove('light')
-      burger.classList.add('dark')
+      theme.classList.remove('light')
+      theme.classList.add('dark')
       condition = 'dark'
       animation()
       break
