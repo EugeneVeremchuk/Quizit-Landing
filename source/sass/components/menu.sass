@@ -7,9 +7,6 @@ $buttonTo: math.div($buttonFrom, $index)
 $interfaceFrom: $buttonFrom * 3
 $interfaceTo: math.div($interfaceFrom, $index)
 
-$borderFrom: $buttonBorder
-$borderTo: math.div($borderFrom, 2)
-
 .menu
   position: relative
   &__button
@@ -33,6 +30,11 @@ $borderTo: math.div($borderFrom, 2)
       border: var(--color) solid $buttonBorder
 
       transition: transform .2s $bounce 0s
+
+      @media screen and  (max-width: $mobile)
+        &
+          $buttonBorderSmall: $buttonBorder - 2
+          border: var(--color) solid $buttonBorderSmall
       .burger
         position: relative
 
@@ -63,6 +65,19 @@ $borderTo: math.div($borderFrom, 2)
     z-index: 0
 
     transition: height .3s $bounce 0s, opacity .3s $bounce 0s
+
+    @media screen and  (max-width: $tablet)
+      &
+        top: rem(4)
+        left: rem(4)
+    @media screen and  (max-width: $mobile)
+      &
+        top: rem(3)
+        left: rem(3)
+    @media screen and  (max-width: $mobileSmall)
+      &
+        top: rem(2)
+        left: rem(2)
     &-wrapper
       width: 100%
       height: 100%
@@ -105,6 +120,10 @@ $borderTo: math.div($borderFrom, 2)
 
           fill: var(--color)
           stroke: var(--color)
+      @media screen and  (max-width: $mobile)
+        &
+          $interfaceBorderSmall: $buttonBorder - 2
+          border: var(--color) solid $interfaceBorderSmall
     &-border
       position: absolute
       top: 2%
@@ -140,6 +159,16 @@ $borderTo: math.div($borderFrom, 2)
     transform: scale(1)
 
 .hover
-  transform: translate(3px, 3px)
+  transform: translate(rem(3), rem(3))
 .active
-  transform: translate(5px, 5px)
+  transform: translate(rem(5), rem(5))
+
+  @media screen and  (max-width: $tablet)
+    &
+      transform: translate(rem(4), rem(4))
+  @media screen and  (max-width: $mobile)
+    &
+      transform: translate(rem(3), rem(3))
+  @media screen and  (max-width: $mobileSmall)
+    &
+      transform: translate(rem(2), rem(2))

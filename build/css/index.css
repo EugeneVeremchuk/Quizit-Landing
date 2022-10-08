@@ -246,6 +246,11 @@ body .loaded {
   border: var(--color) solid 7px;
   transition: transform 0.2s cubic-bezier(0.47, 1.64, 0.41, 0.8) 0s;
 }
+@media screen and (max-width: 47.99875em) {
+  .menu__button-wrapper {
+    border: var(--color) solid 5px;
+  }
+}
 .menu__button-wrapper .burger {
   position: relative;
   width: 65%;
@@ -273,6 +278,24 @@ body .loaded {
   left: 0.3125rem;
   z-index: 0;
   transition: height 0.3s cubic-bezier(0.47, 1.64, 0.41, 0.8) 0s, opacity 0.3s cubic-bezier(0.47, 1.64, 0.41, 0.8) 0s;
+}
+@media screen and (max-width: 61.99875em) {
+  .menu__interface {
+    top: 0.25rem;
+    left: 0.25rem;
+  }
+}
+@media screen and (max-width: 47.99875em) {
+  .menu__interface {
+    top: 0.1875rem;
+    left: 0.1875rem;
+  }
+}
+@media screen and (max-width: 29.99875em) {
+  .menu__interface {
+    top: 0.125rem;
+    left: 0.125rem;
+  }
 }
 .menu__interface-wrapper {
   width: 100%;
@@ -312,6 +335,11 @@ body .loaded {
   height: 65%;
   fill: var(--color);
   stroke: var(--color);
+}
+@media screen and (max-width: 47.99875em) {
+  .menu__interface-wrapper {
+    border: var(--color) solid 5px;
+  }
 }
 .menu__interface-border {
   position: absolute;
@@ -435,29 +463,44 @@ body .loaded {
 }
 
 .hover {
-  transform: translate(3px, 3px);
+  transform: translate(0.1875rem, 0.1875rem);
 }
 
 .active {
-  transform: translate(5px, 5px);
+  transform: translate(0.3125rem, 0.3125rem);
+}
+@media screen and (max-width: 61.99875em) {
+  .active {
+    transform: translate(0.25rem, 0.25rem);
+  }
+}
+@media screen and (max-width: 47.99875em) {
+  .active {
+    transform: translate(0.1875rem, 0.1875rem);
+  }
+}
+@media screen and (max-width: 29.99875em) {
+  .active {
+    transform: translate(0.125rem, 0.125rem);
+  }
 }
 
 #top,
 #bottom,
-#cross {
-  transition: all 0.1s ease-in-out 0s;
+#middle {
+  transition: transform 0.1s ease-in-out 0s;
 }
 
 .menu__button:hover .burger.open #top {
-  transform: translateY(7px);
+  transform: translateY(5px);
 }
 .menu__button:hover .burger.open #bottom {
   transform: translateY(-5px);
 }
 
-.menu__button:hover .burger.close #cross {
+.menu__button:hover .burger.close #middle {
   transform-origin: 50% 50%;
-  transform: scale(1.05);
+  transform: translateY(-5px);
 }
 
 #border-hover,
