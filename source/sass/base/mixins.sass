@@ -40,7 +40,7 @@
 	grid-template-columns: repeat(auto-#{$type}, minmax($min, $max))
 
 // Адаптивное свойство (clamp)
-@mixin adaptiveValue($property, $startSize, $minSize, $keepSize: 0, $widthFrom: $containerWidth, $widthTo: $minWidth)
+@mixin adaptiveValue($property, $startSize, $minSize, $keepSize: 0, $widthFrom: 1366.98, $widthTo: $minWidth)
 	@if ($startSize==0)
 		$startSize: 0.000001
 
@@ -49,9 +49,6 @@
 
 	// Для calc();
 	$addSize: math.div($startSize - $minSize, 16)
-
-	@if ($widthFrom == $containerWidth and $maxWidthContainer == 0)
-		$widthFrom: $maxWidth
 
 	// Брейк-поинты в EM
 	$widthFromMedia: em($widthFrom)
