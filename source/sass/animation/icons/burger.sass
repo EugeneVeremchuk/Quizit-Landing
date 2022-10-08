@@ -3,15 +3,15 @@
 #middle
   transition: transform .1s ease-in-out 0s
 
-.menu__button:hover .burger.open
-  @media screen and (max-width: $tablet)
+@media (any-hover: hover)
+  .menu__button:hover .burger.open
     & #top
       transform: translateY(5px)
     & #bottom
       transform: translateY(-5px)
 
-.menu__button:hover .burger.close
-  @media screen and (max-width: $tablet)
+@media (any-hover: hover)
+  .menu__button:hover .burger.close
     & #middle
       transform-origin: 50% 50%
       transform: translateY(-5px)
