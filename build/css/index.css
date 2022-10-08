@@ -491,16 +491,20 @@ body .loaded {
   transition: transform 0.1s ease-in-out 0s;
 }
 
-.menu__button:hover .burger.open #top {
-  transform: translateY(5px);
-}
-.menu__button:hover .burger.open #bottom {
-  transform: translateY(-5px);
+@media screen and (max-width: 61.99875em) {
+  .menu__button:hover .burger.open #top {
+    transform: translateY(5px);
+  }
+  .menu__button:hover .burger.open #bottom {
+    transform: translateY(-5px);
+  }
 }
 
-.menu__button:hover .burger.close #middle {
-  transform-origin: 50% 50%;
-  transform: translateY(-5px);
+@media screen and (max-width: 61.99875em) {
+  .menu__button:hover .burger.close #middle {
+    transform-origin: 50% 50%;
+    transform: translateY(-5px);
+  }
 }
 
 #border-hover,
