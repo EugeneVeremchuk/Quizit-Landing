@@ -1,4 +1,4 @@
-import KUTE from 'kute.js'
+import { gsap } from 'gsap'
 
 const root = document.querySelector(':root')
 const sound = document.querySelector('.sound')
@@ -17,17 +17,19 @@ function soundAnimation(event) {
   }
 
   function animationOn() {
-    line.classList.add('line')
-    KUTE.to('#condition', { path: '#on' }, { delay: 100, duration: 0.2, easing: 'easingCubicIn' }).start()
-    KUTE.to('#outerRing', { attr: { cx: 108.83, r: 96.33 } }, { delay: 100, duration: 200, easing: 'easingCubicIn' }).start()
-    KUTE.to('#innerRing', { attr: { cx: 108.83, r: 59.67 } }, { duration: 200, easing: 'easingCubicIn' }).start()
+    gsap.to('#speaker', { duration: .1, delay: 0, ease: "power1.inOut", translateX: 40 })
+    gsap.to('#cross', { duration: .1, delay: 0, ease: "power1.inOut", translateX: -40 })
+    gsap.to('#cross', { duration: .1, delay: .2, ease: "power1.inOut", scale: 0 })
+    gsap.to('#speaker', { duration: .1, delay: .3, ease: "power1.inOut", translateX: "5%" })
+    gsap.to('#volume', { duration: .1, delay: .3, ease: "power1.inOut", translateX: "5%", autoAlpha: 1, scale: 1 })
   }
 
   function animationOff() {
-    KUTE.to('#condition', { path: '#off' }, { delay: 300, duration: 0.2, easing: 'easingCubicIn' }).start()
-    KUTE.to('#outerRing', { attr: { cx: 50, r: 80 } }, { delay: 100, duration: 200, easing: 'easingCubicIn' }).start()
-    KUTE.to('#innerRing', { attr: { cx: 50, r: 45 } }, { duration: 200, easing: 'easingCubicIn' }).start()
-    setTimeout(() => { line.classList.remove('line') }, 350)
+    gsap.to('#speaker', { duration: .1, delay: 0, ease: "power1.inOut", translateX: 40 })
+    gsap.to('#volume', { duration: .1, delay: 0, ease: "power1.inOut", translateX: -40 })
+    gsap.to('#volume', { duration: .1, delay: .2, ease: "power1.inOut", scale: 0 })
+    gsap.to('#speaker', { duration: .1, delay: .3, ease: "power1.inOut", translateX: "5%" })
+    gsap.to('#cross', { duration: .1, delay: .3, ease: "power1.inOut", translateX: "5%", scale: 1 })
   }
 
   lock()
@@ -48,7 +50,7 @@ function soundAnimation(event) {
     default: console.warn('Please set condition for a sound icon')
   }
 
-  setTimeout(unlock, 500)
+  unlock()
 
 }
 

@@ -7,7 +7,7 @@ let condition = 'dark'
 
 function themeAnimation(event) {
 
-  const border = this.querySelector('#border-rotate')
+  const border = this.querySelector('#border')
   const circle = this.querySelector('#circle')
 
   const lock = () => {

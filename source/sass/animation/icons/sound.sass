@@ -1,38 +1,25 @@
-.sound
-  transition: all .2s ease-in-out 0s
-  
-#line,
-#outerRing
-  fill: none
-  stroke-width: 20
-  stroke-linecap: round
 
+.sound:hover
+  cursor: pointer
+  
+#speaker,
+#volume,
+#cross
+  fill: var(--color)
+
+  transform: translateX(5%)
   transition: all .1s ease-in-out 0s
 
-#on,
-#off,
-#speaker,
-#innerRing,
-#condition
-  stroke-width: 0
+#volume,
+#cross
+  stroke: var(--color)
 
-#line
-  transform: translateY(8px)
-  stroke-width: 17
-  stroke-dasharray: 221.2236785888672
+  stroke-width: 10
+  stroke-linecap: round
 
-.line
-  stroke-dashoffset: -221.2236785888672
+#volume
+  transform-origin: center center
+  transform: translateX(-40px)
 
-#ringsMask
-  transform: translateX(70%)
-
-.sound.on:hover
-  & #outerRing
-    cx: 90
-  & #innerRing
-    cx: 80
-
-.sound.off:hover
-  & #line
-    stroke-dashoffset: -221.2236785888672
+  opacity: 0
+  visibility: hidden

@@ -21,7 +21,7 @@ $fontSize: rem(14) // где 14(px) - размер шрифта по умолч�
 $dark: #2C3033
 $light: #EDECE7
 
-$mainColor: $dark // Цвет шрифта по умолчанию
+$mainColor: $light // Цвет шрифта по умолчанию
 
 $blue: #47568c
 $red: #f03800
@@ -84,6 +84,7 @@ $mobileSmall: em(479.98) // Телефоны S
 // Стили тега BODY ================================================
 body
   background-color: $dark
+  height: 4000px
   .lock
     overflow: hidden
     touch-action: none
@@ -99,17 +100,10 @@ $colors: 'blue' $blue, 'red' $red, 'yellow' $yellow, 'lightBlue' $lightBlue
   .cls-#{$color}
     fill: $hex
 
-.cover
-  width: 100%
-  height: 100vh
-  display: flex
-  justify-content: center
-  align-items: center
-
-@import components/menu
-@import animation/icons/burger
-@import animation/icons/theme
-@import animation/icons/sound
+// @import components/menu
+// @import animation/icons/burger
+// @import animation/icons/theme
+// @import animation/icons/sound
 
 $masks: 'burger', 'theme', 'sound'
 @each $mask in $masks
@@ -121,3 +115,5 @@ $masks: 'burger', 'theme', 'sound'
     width: 100%
     height: 100%
     display: var(--mask-#{$mask})
+
+@import components/scroll

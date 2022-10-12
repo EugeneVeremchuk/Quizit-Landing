@@ -1,9 +1,10 @@
 
-#border-hover,
-#border-rotate
+.theme:hover
+  cursor: pointer
+  
+#border
   transition: transform 750ms cubic-bezier(0.11, 0.14, 0.29, 1.32) 0s
   transform-origin: center center
-
 #circle
   transition: all 500ms ease
 
@@ -12,7 +13,3 @@
 
 .animate-circle
   transform: translateX(-60px)
-
-#Theme:hover 
-  & #border-hover 
-    transform: rotate(90deg)

@@ -18,14 +18,6 @@ if (document.body.classList.contains('_pc')) {
   $burger.addEventListener('mouseout', mouseout)
 }
 
-// if (document.body.classList.contains('_mobile')) {
-//   $burger.addEventListener('mousedown', mousedown)
-//   $burger.addEventListener('mouseup', mouseup)
-// } else {
-//   $burger.addEventListener('mouseover', mouseover)
-//   $burger.addEventListener('mouseout', mouseout)
-// }
-
 let condition = 'hide'
 $menuInterface.classList.add('hide')
 
