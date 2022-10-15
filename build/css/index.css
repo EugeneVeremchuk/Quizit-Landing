@@ -206,10 +206,6 @@ body .loaded {
   display: var(--mask-sound);
 }
 
-::-webkit-scrollbar {
-  width: 0;
-}
-
 .container {
   width: 100%;
   height: 100%;
@@ -229,7 +225,12 @@ body .loaded {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.75s cubic-bezier(0.105, 0.43, 0, 0.995) 0s;
+  transition: transform 0.75s cubic-bezier(0.075, 0.5, 0, 1), opacity 0.75s ease;
   will-change: transform;
   transform-style: preserve-3d;
+}
+.frame__container {
+  font-weight: 700;
+  color: #f03800;
+  font-size: 64px;
 }
