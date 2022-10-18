@@ -234,3 +234,6 @@ body .loaded {
   color: #f03800;
   font-size: 64px;
 }
+.frame-bg {
+  background-color: rgba(44, 48, 51, 0.6);
+}

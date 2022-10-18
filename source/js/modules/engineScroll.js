@@ -7,11 +7,8 @@ const $frames = document.querySelectorAll('.frame')
 function engineScroll(event) {
   
   let top = document.documentElement.scrollTop
-  console.log('top', top)
   let delta = lastPosition - top
-  console.log('delta', delta)
   lastPosition = top
-  console.log('lastPos', lastPosition)
   
   $frames.forEach((frame, index) => {
     zValues.push((index * zSpacing) + zSpacing)
@@ -23,10 +20,8 @@ function engineScroll(event) {
 
 }
 
-window.addEventListener('scroll', function(event) {
-  console.log(document.documentElement.scrollTop)
-})
+window.addEventListener('scroll', engineScroll)
 
-//window.scrollTo(0, 10)
+window.scrollTo(0, 10)
 
 
