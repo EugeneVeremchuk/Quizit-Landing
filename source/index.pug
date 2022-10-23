@@ -1,5 +1,8 @@
 include pug/auto  
 include pug/animation/icons
+include pug/animation/logos
+
+- const navigation = ['nls-red', 'nls-blue', 'nls-yellow', 'nls-lightBlue']
 
 doctype html 
 html(lang='en')
@@ -7,11 +10,10 @@ html(lang='en')
     include pug/head
     title Quizit  
   body
-    .container 
-      section.gallery 
-        .frame.frame-bg
-          .frame__container QUIZIT - CHALLANGE YOURSELF
-        .frame
-          .frame__container
-            img(src="@img/redask.webp")
-        .frame Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, autem!
+    header.header
+      .header__container
+        .logo 
+          +Logo
+        include pug/components/navigation
+        include pug/components/menu
+    include pug/components/scroll

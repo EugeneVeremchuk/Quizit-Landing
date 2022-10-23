@@ -1,6 +1,21 @@
 
-// ::-webkit-scrollbar
-//   width: 0
+$gap: 30px
+$position: 2
+$sideLong: 30
+$sideShort: 20
+
+$index: calc(1vw + 1vh)
+
+@function position($side)
+  $result: calc((($side / $position) * $index) + $gap)
+  @return $result
+
+@function size($side)
+  $result: calc($side * $index)
+  @return $result
+
+::-webkit-scrollbar
+  width: 0
 
 .container
   width: 100%
@@ -10,7 +25,8 @@
 
 .gallery
   transform-style: preserve-3d
-  height: 100%
+  width: inherit
+  height: inherit
 
 .frame
   width: 100%
@@ -19,13 +35,52 @@
   display: flex
   justify-content: center
   align-items: center
-  transition: transform .75s cubic-bezier(.075, .5, 0, 1), opacity .75s ease
+  transition: transform .75s $scroll, opacity .75s ease
   will-change: transform
   transform-style: preserve-3d
-  &__container
-    font-weight: 700
-    color: $red
-    font-size: $mainTitle
-  &-bg 
+  &-bg
     background-color: rgba($dark, .6)
-    
+  &__content
+    font-weight: 900
+    color: $red
+    &_media
+      position: relative
+
+      width: size($sideShort)
+      height: size($sideLong)
+
+      background-position: center
+      background-size: cover
+
+      border: $red solid $photoBorder
+      border-radius: 80px
+      &::before
+        content: ""
+        position: absolute
+        top: 0.2%
+        left: 0.2%
+        z-index: -1
+        width: inherit
+        height: inherit
+
+        background-color: $red
+        border-radius: 80px
+    &_text
+      position: relative
+      .main-title
+        font-size: $mainTitle
+      .title
+        font-size: $mainTitle
+        margin: 0px 0px $titleSpace 0px
+      .subtitle
+        font-size: $text
+    .tc
+      text-align: center
+    .hw
+      max-width: 560px
+    .fw
+      max-width: 800px
+  .left
+    right: position($sideShort)
+  .right
+    left: position($sideShort)

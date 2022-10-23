@@ -1,6 +1,7 @@
 
 let zSpacing = -1000
 let zValues = []
+let specFrames = []
 let lastPosition = zSpacing / 5
 const $frames = document.querySelectorAll('.frame')
 
@@ -11,7 +12,9 @@ function engineScroll(event) {
   lastPosition = top
   
   $frames.forEach((frame, index) => {
+
     zValues.push((index * zSpacing) + zSpacing)
+
     zValues[index] += delta * -5.5
     let transfrom = `translateZ(${zValues[index]}px)`
     let opacity = zValues[index] < Math.abs(zSpacing) / 1.8 ? 1 : 0

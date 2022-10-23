@@ -1,0 +1,28 @@
+
+$navBorder: 100px
+
+@each $color, $hex in $colors
+  .nls-#{$color}
+    background-color: darken($hex, 20)
+    &::before
+      content: ''
+      display: block
+
+      width: 50%
+      height: 100%
+
+      background-color: $hex
+      border-radius: $navBorder
+
+.navigation
+  &__wrapper
+    display: flex
+    gap: 15px
+    &_element
+      width: 70px
+      height: 15px
+
+      border-radius: $navBorder
+
+// .active
+//   width: 150px

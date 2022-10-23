@@ -38,7 +38,6 @@
   },
   "dependencies": {
     "gsap": "^3.11.2",
-    "kute.js": "^2.2.4",
     "mobile-detect": "^1.4.5"
   }
 }
