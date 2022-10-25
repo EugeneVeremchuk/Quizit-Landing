@@ -96,6 +96,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./source/js/animation/logos/logotexth.js":
+/*!************************************************!*\
+  !*** ./source/js/animation/logos/logotexth.js ***!
+  \************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ \"./node_modules/gsap/index.js\");\n\r\n\r\nfunction logoTextHAnimation() {\r\n\r\n  const tl = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline({ repeat: -1, repeatDelay: 2 })\r\n  tl.fromTo('#lth-blue', { scale: 0, translateX: -100 }, { duration: 1, ease: \"elastic.out(1, 0.2)\", scale: 1, translateX: 0 })\r\n  tl.fromTo('#lth-red', { scale: 0, translateX: 100 }, { duration: 1, ease: \"elastic.out(1, 0.2)\", scale: 1, translateX: 0 }, \"<\")\r\n  tl.fromTo('#lth-yellow', { scale: 0, translateY: -100 }, { duration: 1, ease: \"elastic.out(1, 0.2)\", scale: 1, translateY: 0 }, \"<\")\r\n  tl.fromTo('#lth-lightBlue', { scale: 0, translateX: 100, translateY: -100 }, { duration: 1, ease: \"elastic.out(1, 0.2)\", scale: 1, translateX: 0, translateY: 0 }, \"<\")\r\n  tl.fromTo('#lth-text', { opacity: 0, translateX: -200 }, {duration: 1, ease: \"expo.out\", transformOrigin: \"50% 50%\", opacity: 1, translateX: 0 }, \"-=50%\")\r\n\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (logoTextHAnimation);\n\n//# sourceURL=webpack://gulp/./source/js/animation/logos/logotexth.js?");
+
+/***/ }),
+
 /***/ "./source/js/index.js":
 /*!****************************!*\
   !*** ./source/js/index.js ***!
@@ -103,7 +114,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_deviceDetection_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/deviceDetection.js */ \"./source/js/modules/deviceDetection.js\");\n/* harmony import */ var _modules_menuInterface_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menuInterface.js */ \"./source/js/modules/menuInterface.js\");\n/* harmony import */ var _modules_engineScroll_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/engineScroll.js */ \"./source/js/modules/engineScroll.js\");\n/* harmony import */ var _animation_logos_logo_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./animation/logos/logo.js */ \"./source/js/animation/logos/logo.js\");\n\r\n\r\n\r\n// import loaderAnimation from './animation/logos/icon.js'\r\n\r\n// import logoTextHAnimation from './animation/logos/logotexth.js'\r\n// import logoTextVAnimation from './animation/logos/logotextv.js'\r\n\r\n(0,_animation_logos_logo_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"])()\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://gulp/./source/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_deviceDetection_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/deviceDetection.js */ \"./source/js/modules/deviceDetection.js\");\n/* harmony import */ var _modules_menuInterface_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menuInterface.js */ \"./source/js/modules/menuInterface.js\");\n/* harmony import */ var _modules_engineScroll_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/engineScroll.js */ \"./source/js/modules/engineScroll.js\");\n/* harmony import */ var _animation_logos_logo_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./animation/logos/logo.js */ \"./source/js/animation/logos/logo.js\");\n/* harmony import */ var _animation_logos_logotexth_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./animation/logos/logotexth.js */ \"./source/js/animation/logos/logotexth.js\");\n\r\n\r\n\r\n// import loaderAnimation from './animation/logos/icon.js'\r\n\r\n\r\n// import logoTextVAnimation from './animation/logos/logotextv.js'\r\n\r\n(0,_animation_logos_logo_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"])()\r\n;(0,_animation_logos_logotexth_js__WEBPACK_IMPORTED_MODULE_4__[\"default\"])()\r\n\r\n\n\n//# sourceURL=webpack://gulp/./source/js/index.js?");
 
 /***/ }),
 

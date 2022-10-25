@@ -2,7 +2,7 @@ import { gsap } from 'gsap';
 
 function logoTextHAnimation() {
 
-  const tl = gsap.timeline({repeat: -1})
+  const tl = gsap.timeline({ repeat: -1, repeatDelay: 2 })
   tl.fromTo('#lth-blue', { scale: 0, translateX: -100 }, { duration: 1, ease: "elastic.out(1, 0.2)", scale: 1, translateX: 0 })
   tl.fromTo('#lth-red', { scale: 0, translateX: 100 }, { duration: 1, ease: "elastic.out(1, 0.2)", scale: 1, translateX: 0 }, "<")
   tl.fromTo('#lth-yellow', { scale: 0, translateY: -100 }, { duration: 1, ease: "elastic.out(1, 0.2)", scale: 1, translateY: 0 }, "<")
