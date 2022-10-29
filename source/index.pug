@@ -10,13 +10,17 @@ html(lang='en')
   body
     header.header
       .header__container
-        .logo 
+        .logo
           +Logo
         include pug/components/navigation
         include pug/components/menu
+      .header__gradient
     include pug/components/scroll
     .preloader 
       .preloader__logo
         +LogoTextHorizontal
+    .preloader-slide(style="display: none")
+        +LogoSlide
     .border
+      .border__cover
 

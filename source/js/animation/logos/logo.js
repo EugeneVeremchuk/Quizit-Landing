@@ -2,7 +2,7 @@ import { gsap } from 'gsap';
 
 function logoAnimation() {
 
-  const tl = gsap.timeline({ repeat: -1, repeatDelay: 50 })
+  const tl = gsap.timeline({ repeat: -1, delay: 5, repeatDelay: 50 })
   tl.to('#logo-blue', { duration: 2, transformOrigin: "50% 50%", ease: "elastic.in(1, 0.2)", translateX: -30 })
   tl.to('#logo-red', { duration: 2, transformOrigin: "50% 50%", ease: "elastic.in(1, 0.2)", translateX: 30 }, "<")
   tl.to('#logo-yellow', { duration: 2, transformOrigin: "50% 50%", ease: "elastic.in(1, 0.2)", translateY: -30 }, "<")

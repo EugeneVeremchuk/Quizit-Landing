@@ -25,7 +25,8 @@ function engineScroll() {
 
   window.addEventListener('scroll', engineScroll)
 
-  window.scrollTo(0, 10)
+  const startPosition = window.scrollY === 10 ? 11 : 10
+  window.scrollTo(0, startPosition)
 
 }
 
