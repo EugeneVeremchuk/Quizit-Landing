@@ -98,17 +98,19 @@ $borderTo: $borderFrom - 3
 [data-mask="false"]
   pointer-events: auto
 
-.menu__button:hover
-  > .menu__button-wrapper
-    transform: translate(2%, 2%)
+@media (any-hover: hover)
+  .menu__button:hover
+    > .menu__button-wrapper
+      transform: translate(2%, 2%)
 .menu__button:active
   > .menu__button-wrapper
     transform: translate(3%, 3%)
 
 .menu[data-menu-condition="show"]
-  > .menu__button:hover
-    > .menu__button-wrapper
-      transform: translate(0px, 0px)
+  @media (any-hover: hover)
+    > .menu__button:hover
+      > .menu__button-wrapper
+        transform: translate(0px, 0px)
 .menu[data-menu-condition="show"]
   > .menu__button:active
     > .menu__button-wrapper
