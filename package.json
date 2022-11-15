@@ -37,7 +37,7 @@
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
-    "gsap": "^3.11.2",
+    "gsap": "^3.11.3",
     "mobile-detect": "^1.4.5"
   }
 }

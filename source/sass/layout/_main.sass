@@ -1,0 +1,123 @@
+
+@use "../base/_variables.sass" as vars
+
+$gap: 30px
+$position: 2
+$sideLong: 30
+$sideShort: 20
+
+$index: calc(1vw + 1vh)
+
+@function position($side)
+  $result: calc((($side / $position) * $index) + $gap)
+  @return $result
+
+@function size($side)
+  $result: calc($side * $index)
+  @return $result
+
+::-webkit-scrollbar
+  width: 0
+
+.container
+  width: 100%
+  height: 100%
+  position: fixed
+  perspective: 1500px
+
+.gallery
+  transform-style: preserve-3d
+  width: inherit
+  height: inherit
+
+.frame
+  width: 100%
+  height: 100%
+  position: absolute
+  display: flex
+  justify-content: center
+  align-items: center
+  transition: transform .75s vars.$scroll, opacity .75s ease
+  will-change: transform
+  transform-style: preserve-3d
+  &-bg
+    background-color: rgba(vars.$dark, .6)
+  &-solid
+    background-color: vars.$dark
+  &__content
+    font-weight: 900
+    color: vars.$red
+    &_media
+      position: relative
+
+      width: size($sideShort)
+      height: size($sideLong)
+
+      background-position: center
+      background-size: cover
+
+      border: vars.$red solid vars.$photoBorder
+      border-radius: 80px
+      &::before
+        content: ""
+        position: absolute
+        top: 0.2%
+        left: 0.2%
+        z-index: -1
+        width: inherit
+        height: inherit
+
+        background-color: vars.$red
+        border-radius: 80px
+    &_text
+      position: relative
+      .main-title
+        font-size: vars.$mainTitle
+      .title
+        font-size: vars.$mainTitle
+        margin: 0px 0px vars.$titleSpace 0px
+      .subtitle
+        font-size: vars.$text
+      .li
+        font-size: vars.$text
+        list-style-type: disc
+        &:not(:last-child)
+          margin: 0px 0px 8px 0px
+      .button
+        position: relative
+        left: 0
+        top: 100px
+
+        display: inline-block
+
+        background-color: vars.$dark
+        font-size: vars.$textButton
+        font-weight: 900
+        text-transform: uppercase
+        border: vars.$buttonBorder solid var(--color)
+        border-radius: 30px
+        padding: 15px 35px
+        &__border
+          position: absolute
+          top: 0px
+          left: 0px
+
+          z-index: -1
+
+          width: 104%
+          height: 113%
+
+          border-radius: 30px
+
+          background-color: var(--color)
+
+.tc
+  text-align: center
+.hw
+  max-width: 560px
+.fw
+  max-width: 800px
+.left
+  right: position($sideShort)
+.right
+  left: position($sideShort)

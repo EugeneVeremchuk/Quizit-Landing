@@ -16,19 +16,20 @@ const path = {
 	},
 	source: {
 		js: `${sourceFolder}/js/index.js`,
-		images: `${sourceFolder}/images/**/*.{jpg,jpeg,png,gif,webp}`,
-		svg: `${sourceFolder}/images/svg/*.svg`,
+		images: `${sourceFolder}/assets/images/**/*.{jpg,jpeg,png,gif,webp}`,
+		fonts: `${sourceFolder}/assets/fonts/`,
+		svg: `${sourceFolder}/assets/images/svg/*.svg`,
 		sass: `${sourceFolder}/sass/index.sass`,
-		html: `${sourceFolder}/*.pug`,
-		files: `${sourceFolder}/files/**/*.*`
+		html: `${sourceFolder}/pug/index.pug`,
+		files: `${sourceFolder}/assets/files/**/*.*`
 	},
    watch: {
 		js: `${sourceFolder}/js/**/*.js`,
 		sass: `${sourceFolder}/sass/**/*.sass`,
 		html: `${sourceFolder}/**/*.pug`,
-		images: `${sourceFolder}/images/**/*.{jpg,jpeg,png,svg,gif,ico,webp}`,
-		svg: `${sourceFolder}/images/svg/*.svg`,
-		files: `${sourceFolder}/files/**/*.*`
+		images: `${sourceFolder}/assets/images/**/*.{jpg,jpeg,png,svg,gif,ico,webp}`,
+		svg: `${sourceFolder}/assets/images/svg/*.svg`,
+		files: `${sourceFolder}/assets/files/**/*.*`
 	},
   clean: buildFolder,
 	buildFolder,

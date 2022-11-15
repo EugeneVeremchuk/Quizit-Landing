@@ -3,7 +3,7 @@ import fonter from 'gulp-fonter-fix'
 import ttf2woff2 from 'gulp-ttf2woff2'
 
 export const otf_ttf = () => {
-	return config.gulp.src(`${config.path.sourceFolder}/fonts/*.otf`, {})
+	return config.gulp.src(`${config.path.source.fonts}*.otf`, {})
 		.pipe(config.plugins.plumber(
 			config.plugins.notify.onError({
 				title: "FONTS",
@@ -13,11 +13,11 @@ export const otf_ttf = () => {
 		.pipe(fonter({
 			formats: ['ttf']
 		}))
-		.pipe(config.gulp.dest(`${config.path.sourceFolder}/fonts/`))
+		.pipe(config.gulp.dest(`${config.path.source.fonts}`))
 }
 
 export const ttf_woff = () => {
-	return config.gulp.src(`${config.path.sourceFolder}/fonts/*.ttf`, {})
+	return config.gulp.src(`${config.path.source.fonts}*.ttf`, {})
 		.pipe(config.plugins.plumber(
 			config.plugins.notify.onError({
 				title: "FONTS",
@@ -28,25 +28,25 @@ export const ttf_woff = () => {
 			formats: ['woff']
 		}))
 		.pipe(config.gulp.dest(`${config.path.build.fonts}`))
-		.pipe(config.gulp.src(`${config.path.sourceFolder}/fonts/*.ttf`))
+		.pipe(config.gulp.src(`${config.path.source.fonts}*.ttf`))
 		.pipe(ttf2woff2())
 		.pipe(config.gulp.dest(`${config.path.build.fonts}`))
-		.pipe(config.gulp.src(`${config.path.sourceFolder}/fonts/*.{woff,woff2}`))
-		.pipe(config.gulp.dest(`${config.path.build.fonts}`));
+		.pipe(config.gulp.src(`${config.path.source.fonts}*.{woff,woff2}`))
+		.pipe(config.gulp.dest(`${config.path.build.fonts}`))
 }
 
 export const font = () => {
-	let fontsFile = `${config.path.sourceFolder}/sass/fonts/fonts.sass`;
+	let fontsFile = `${config.path.sourceFolder}/sass/base/fonts/_fonts.sass`;
 	fs.readdir(config.path.build.fonts, function (err, fontsFiles) {
 		if (fontsFiles) {
 			if (!fs.existsSync(fontsFile)) {
 				fs.writeFile(fontsFile, '', cb);
 				let newFileOnly;
 				for (var i = 0; i < fontsFiles.length; i++) {
-					let fontFileName = fontsFiles[i].split('.')[0];
+					let fontFileName = fontsFiles[i].split('.')[0]
 					if (newFileOnly !== fontFileName) {
-						let fontName = fontFileName.split('-')[0] ? fontFileName.split('-')[0] : fontFileName;
-						let fontWeight = fontFileName.split('-')[1] ? fontFileName.split('-')[1] : fontFileName;
+						let fontName = fontFileName.split('-')[0] ? fontFileName.split('-')[0] : fontFileName
+						let fontWeight = fontFileName.split('-')[1] ? fontFileName.split('-')[1] : fontFileName
 						if (fontWeight.toLowerCase() === 'thin') {
 							fontWeight = 100;
 						} else if (fontWeight.toLowerCase() === 'extralight') {
@@ -71,13 +71,13 @@ export const font = () => {
 					}
 				}
 			} else {
-				console.log("Файл sass/fonts.sass уже существует. Для обновления файла нужно его удалить!");
+				console.log("Файл sass/fonts.sass уже существует. Для обновления файла нужно его удалить!")
 			}
 		} else {
       console.log('Локальных шрифтов не существует!')
     }
 	});
 
-	return config.gulp.src(`${config.path.sourceFolder}`);
+	return config.gulp.src(`${config.path.sourceFolder}`)
 	function cb() { }
 }

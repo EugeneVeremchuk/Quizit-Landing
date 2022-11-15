@@ -1,42 +1,46 @@
 
-const root = document.querySelector(':root')
 const theme = document.querySelector('.theme')
+const border = theme.querySelector('#border')
+const circle = theme.querySelector('#circle')
 
-theme.classList.add('dark')
-let condition = 'dark'
+const lock = () => {
+  theme.dataset.mask = true
+}
+const unlock = () => {
+  theme.dataset.mask = false
+}
 
-function themeAnimation(event) {
+const animationDark = () => {
+  border.classList.toggle('animate-border')
+  circle.classList.toggle('animate-circle')
+}
+const animationLight = () => {
+  border.classList.toggle('animate-border')
+  circle.classList.toggle('animate-circle')
+}
 
-  const border = this.querySelector('#border')
-  const circle = this.querySelector('#circle')
+theme.dataset.mask = false
+theme.dataset.theme = 'dark'
+let condition = theme.dataset.theme
 
-  const lock = () => {
-    root.style.setProperty('--mask-theme', 'block')
-  }
+if (theme.dataset.theme === 'dark') {
+  animationDark()
+}
 
-  const unlock = () => {
-    root.style.setProperty('--mask-theme', 'none')
-  }
-
-  const animation = () => {
-    border.classList.toggle('animate-border')
-    circle.classList.toggle('animate-circle')
-  }
+export function themeAnimation() {
 
   lock()
 
   switch (condition) {
     case 'dark':
-      theme.classList.remove('dark')
-      theme.classList.add('light')
+      theme.dataset.theme = 'light'
       condition = 'light'
-      animation()
+      animationLight()
       break
     case 'light':
-      theme.classList.remove('light')
-      theme.classList.add('dark')
+      theme.dataset.theme = 'dark'
       condition = 'dark'
-      animation()
+      animationDark()
       break
     default: console.warn('Please set condition for a theme icon')
   }
@@ -44,5 +48,3 @@ function themeAnimation(event) {
   setTimeout(unlock, 500)
 
 }
-
-export default themeAnimation;

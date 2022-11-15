@@ -1,132 +1,23 @@
-@use "sass:math"
-@use "sass:color"
 
-// Подключение миксинов ================================================
-@import "base/utils"
+//* Настройка шаблона 
 
-// Подключить если есть локальные файлы шрифтов =====================
-@import "fonts/fonts"
+// Подключение шрифтов 
+@use "base/fonts/_fonts.sass"
+// Подключение иконочных шрифтов 
+@use "base/fonts/_icons.sass"
+// Переменные
+@use "base/_variables.sass"
+// Обнуление стилей
+@use "base/_null.sass"
+// Преднастройка шаблона
+@use "base/_settings.sass"
 
-// Подключение иконочных шрифтов ====================================
-@import "fonts/icons"
+//* Верстка
 
-// =====================================================================
-// Настройки шаблона ================================================
-// ==================================================================
+@use "layout/_preloader.sass"
+@use "layout/_border.sass"
+@use "layout/_header.sass"      
+@use "layout/_main.sass"
 
-// Шрифт по умолчанию =============================================
-$fontFamily: "TTOctosquares"
-$fontSize: rem(14) // где 14(px) - размер шрифта по умолчанию из макета
-
-// Основные цвета
-$dark: #2C3033
-$light: #EDECE7
-
-$mainColor: $light // Цвет шрифта по умолчанию
-
-$blue: #47568c
-$red: #f03800
-$yellow: #fed843
-$lightBlue: #6aa9ff
-
-// GridSpacing
-$frameBorder: 30px
-$photoBorder: 10px
-$buttonBorder: 7px
-$titleSpace: 32px
-
-// Typography
-$mainTitle: 64px
-$textButton: 48px
-$text: 40px
-
-// Development
-$burgerMask: none
-$themeMask: none
-$soundMask: none
-
-// ZIndex
-$ultra: 5000
-$super: 4000
-$high: 3000
-$mid: 2000
-$low: 1000
-
-// Custom transition
-$bounce: cubic-bezier(.47,1.64,.41,.8)
-$scroll: cubic-bezier(.075, .5, 0, 1)
-
-// CSS переменые ===================================================
-
-:root
-  --mask-burger: #{$burgerMask}
-  --mask-theme: #{$themeMask}
-  --mask-sound: #{$soundMask}
-  --color: #{$red}
-  --dark: #{$dark}
-  --light: #{$light}
-
-// Настройки адаптивной сетки ====================================
-
-// Минимальная ширина страницы
-$minWidth: 375
-// Ширина полотна (макета)
-$maxWidth: 1920
-
-// Брейк-поинты
-$pc: em(1366.98) // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
-$tablet: em(991.98) // Планшеты, некоторые телефоны в горизонтальном положении
-$mobile: em(767.98) // Телефоны L
-$mobileSmall: em(479.98) // Телефоны S
-
-// ==================================================================
-// ==================================================================
-
-// Обнуление ======================================================
-@import "base/null"
-
-// Стили тега BODY ================================================
-body
-  background-color: $dark
-  height: 4000px
-  .lock
-    overflow: hidden
-    touch-action: none
-    overscroll-behavior: none
-  .loaded
-    text-decoration: none
-
-// Подключение стилей отдельных блоков
-
-// Анимации icons
-$colors: 'blue' $blue, 'red' $red, 'yellow' $yellow, 'lightBlue' $lightBlue
-@each $color, $hex in $colors
-  .cls-#{$color}
-    fill: $hex
-
-@import components/menu
-@import animation/icons/burger
-@import animation/icons/theme
-@import animation/icons/sound
-
-@import components/navigation
-
-// @import animation/logos/icon
-@import animation/logos/logo
-// @import animation/logos/logotexth
-// @import animation/logos/logotextv
-
-$masks: 'burger', 'theme', 'sound'
-@each $mask in $masks
-  .mask-#{$mask}
-    position: absolute
-    top: 0
-    left: 0
-    z-index: $high
-    width: 100%
-    height: 100%
-    display: var(--mask-#{$mask})
-
-@import components/scroll
-@import components/preloader
-@import components/header
+//* Верстка компонентов
+// @use "components/_dev.sass"

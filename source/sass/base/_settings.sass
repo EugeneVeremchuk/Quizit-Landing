@@ -1,0 +1,23 @@
+
+@use "_variables.sass" as vars
+
+// CSS переменые
+:root
+  --color: #{vars.$red}
+  --theme: #{vars.$dark}
+
+// Настройка body
+body
+  background-color: vars.$mainColor
+  height: 4000px
+  .lock
+    overflow: hidden
+    touch-action: none
+    overscroll-behavior: none
+  .loaded
+    text-decoration: none
+
+// Цвета logos
+@each $color, $hex in vars.$colors
+  .cls-#{$color}
+    fill: $hex

@@ -1,0 +1,35 @@
+
+@use "../base/_variables.sass" as zindex
+
+@use "../components/animations/_logos.sass"
+@use "../components/_menu.sass"
+@use "../components/_navigation.sass"
+
+.header
+  width: 100%
+  &__container
+    position: fixed
+    top: 0
+    left: 0
+
+    z-index: zindex.$high
+
+    width: inherit
+
+    display: flex
+    justify-content: space-between
+    align-items: flex-start
+
+    padding: 35px 45px 0px 35px
+  &__gradient
+    position: fixed
+    top: 0
+    left: 0
+
+    z-index: zindex.$low
+
+    width: 100%
+    height: 20%
+
+    background: rgb(44,48,51)
+    background: linear-gradient(180deg, rgba(44,48,51,1) 10%, rgba(44,48,51,0.5) 60%, rgba(44,48,51,0) 100%)

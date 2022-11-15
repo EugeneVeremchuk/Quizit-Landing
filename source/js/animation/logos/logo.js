@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 
-function logoAnimation() {
+export function logoAnimation() {
 
   const tl = gsap.timeline({ repeat: -1, delay: 5, repeatDelay: 50 })
   tl.to('#logo-blue', { duration: 2, transformOrigin: "50% 50%", ease: "elastic.in(1, 0.2)", translateX: -30 })
@@ -13,5 +13,3 @@ function logoAnimation() {
   tl.to('#logo-lightBlue', { duration: 2, transformOrigin: "50% 50%", ease: "elastic.out(1, 0.2)", translate: "0px 0px" }, "<")
 
 }
-
-export default logoAnimation;

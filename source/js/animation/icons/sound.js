@@ -1,58 +1,58 @@
 import { gsap } from 'gsap'
 
-const root = document.querySelector(':root')
-const sound = document.querySelector('.sound')
+const $sound = document.getElementById('sound')
 
-sound.classList.add('off')
-let condition = 'off'
+const lock = () => {
+  $sound.dataset.mask = true
+}
+const unlock = () => {
+  $sound.dataset.mask = false
+}
 
-function soundAnimation(event) {
+function animationOn() {
+  gsap.to('#speaker', { duration: .1, delay: 0, ease: "power1.inOut", translateX: 40 })
+  gsap.to('#cross', { duration: .1, delay: 0, ease: "power1.inOut", translateX: -40 })
+  gsap.to('#cross', { duration: .1, delay: .2, ease: "power1.inOut", opacity: 0 })
+  gsap.to('#speaker', { duration: .1, delay: .3, ease: "power1.inOut", translateX: "5%" })
+  gsap.to('#volume', { duration: .1, delay: .3, ease: "power1.inOut", translateX: 0, opacity: 1 })
+}
+function animationOff() {
+  gsap.to('#speaker', { duration: .1, delay: 0, ease: "power1.inOut", translateX: 40 })
+  gsap.to('#volume', { duration: .1, delay: 0, ease: "power1.inOut", translateX: -40 })
+  gsap.to('#volume', { duration: .1, delay: .2, ease: "power1.inOut", opacity: 0 })
+  gsap.to('#speaker', { duration: .1, delay: .3, ease: "power1.inOut", translateX: "5%" })
+  gsap.to('#cross', { duration: .1, delay: .3, ease: "power1.inOut", translateX: 0, opacity: 1 })
+}
 
-  const lock = () => {
-    root.style.setProperty('--mask-sound', 'block')
-  }
+$sound.dataset.mask = false
+$sound.dataset.condition = 'off'
+let condition = $sound.dataset.condition
 
-  const unlock = () => {
-    root.style.setProperty('--mask-sound', 'none')
-  }
+if ($sound.dataset.condition === 'off') {
+  animationOff()
+} else {
+  animationOn()
+}
 
-  function animationOn() {
-    gsap.to('#speaker', { duration: .1, delay: 0, ease: "power1.inOut", translateX: 40 })
-    gsap.to('#cross', { duration: .1, delay: 0, ease: "power1.inOut", translateX: -40 })
-    gsap.to('#cross', { duration: .1, delay: .2, ease: "power1.inOut", scale: 0 })
-    gsap.to('#speaker', { duration: .1, delay: .3, ease: "power1.inOut", translateX: "5%" })
-    gsap.to('#volume', { duration: .1, delay: .3, ease: "power1.inOut", translateX: "5%", autoAlpha: 1, scale: 1 })
-  }
-
-  function animationOff() {
-    gsap.to('#speaker', { duration: .1, delay: 0, ease: "power1.inOut", translateX: 40 })
-    gsap.to('#volume', { duration: .1, delay: 0, ease: "power1.inOut", translateX: -40 })
-    gsap.to('#volume', { duration: .1, delay: .2, ease: "power1.inOut", scale: 0 })
-    gsap.to('#speaker', { duration: .1, delay: .3, ease: "power1.inOut", translateX: "5%" })
-    gsap.to('#cross', { duration: .1, delay: .3, ease: "power1.inOut", translateX: "5%", scale: 1 })
-  }
+export function soundAnimation() {
 
   lock()
 
   switch (condition) {
     case 'off':
-      sound.classList.remove('off')
-      setTimeout(() => sound.classList.add('on'), 200)
-      condition = 'on'
+      $sound.dataset.condition = 'on'
+      condition = $sound.dataset.condition
       animationOn()
       break
     case 'on':
-      sound.classList.remove('on')
-      setTimeout(() => sound.classList.add('off'), 200)
-      condition = 'off'
+      $sound.dataset.condition = 'off'
+      condition = $sound.dataset.condition
       animationOff()
       break
     default: console.warn('Please set condition for a sound icon')
   }
 
-  unlock()
+  setTimeout(unlock, 500)
 
 }
-
-export default soundAnimation;
 
