@@ -4,12 +4,13 @@
 @use "../../base/_utilities.sass" as utils
 
 //! Loader
-.loader
-  width: 300px
-  height: 300px
 
-#icon
-  transform: translate(60px, 60px)
+/* .loader
+      width: 300px
+      height: 300px
+    #icon
+      transform: translate(60px, 60px)
+
 
 //! Logo
 $initialSize: 120
@@ -22,19 +23,3 @@ $logoTo: math.div($initialSize, 2)
   @include utils.adaptiveValue("width", $logoFrom, $logoTo)
 #logo
   transform: translate(9%, 6%)
-
-//! Horizontal Preloader
-.preloader__logo
-  width: 500px
-  height: 250px
-
-#logotexthorizontal
-  transform: translate(60px, 40px)
-
-//! Vertical Preloader
-.preloaderV
-  width: 200px
-  height: 300px
-
-#logotextvertical
-  transform: translate(35px, 50px)

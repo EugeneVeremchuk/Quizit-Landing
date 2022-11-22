@@ -1,6 +1,9 @@
+
+@use "../base/_utilities.sass" as utils
+  
 // Шрифт по умолчанию
 $fontFamily: "TTOctosquares"
-$fontSize: 14px // где 14(px) - размер шрифта по умолчанию из макета
+$fontSize: utils.rem(16) // где 14(px) - размер шрифта по умолчанию из макета
 
 // Основные цвета
 $dark: #2C3033
@@ -15,15 +18,15 @@ $lightBlue: #6aa9ff
 $colors: ( 'blue' $blue, 'red' $red, 'yellow' $yellow, 'lightBlue' $lightBlue )
 
 // GridSpacing
-$frameBorder: 30px
-$photoBorder: 10px
-$buttonBorder: 7px
-$titleSpace: 32px
+$frameBorder: 20
+$photoBorder: 10
+$buttonBorder: 7
+$titleSpace: 32
 
 // Typography
-$mainTitle: 64px
-$textButton: 48px
-$text: 40px
+$mainTitle: 64
+$textButton: 48
+$text: 40
 
 // ZIndex
 $ultra: 5000

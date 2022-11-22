@@ -1,7 +1,11 @@
-.preloader 
-  .preloader__logo
-    +LogoTextHorizontal
-  .preloader__slide(style="display: none")
+.preloader#preloader
+  .preloader__container#preloaderContainer 
+    .preloader__logo
+      .preloaderH#preloaderH
+        +LogoTextHorizontal
+      .preloaderV#preloaderV
+        +LogoTextVertical
+    .preloader__border
+      .preloader__border-cover
+  .preloader__slide#preloaderSlide
     +LogoSlide
-  .preloader__border
-    .preloader__border-cover

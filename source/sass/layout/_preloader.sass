@@ -1,58 +1,101 @@
 
+@use "sass:math"
+
 @use "../base/_variables.sass" as vars
+@use "../base/_utilities.sass" as utils
+
+%horizontalPreloader
+  $size: 500
+  $width: $size
+  $height: math.div($size, 2)
+  $widthTo: math.div($width, 2)
+  $heightTo: math.div($height, 2)
+
+  @include utils.adaptiveValue("width", $width, $widthTo)
+  @include utils.adaptiveValue("height", $height, $heightTo)
+#logotexthorizontal
+  transform: translate(7%, 10%)
+
+%verticalPreloader
+  $size: 500
+  $height: $size
+  $width: math.div($size, 1.5)
+  $widthTo: math.div($width, 2)
+  $heightTo: math.div($height, 2)
+
+  @include utils.adaptiveValue("width", $width, $widthTo)
+  @include utils.adaptiveValue("height", $height, $heightTo)
+#logotextvertical
+  transform: translate(9%, 10%)
 
 .preloader
   width: 100%
   height: 100%
 
   position: fixed
-  top: 0
-  left: 0
   z-index: vars.$ultra
-
-  display: flex
-  justify-content: center
-  align-items: center
 
   background-color: vars.$dark
 
   transition: all .3s ease-in-out 0s
-  &__logo
-    width: 500px
-    height: 250px
-  &__slide
-    position: fixed
-    top: 0
-    left: 0
-  &__border
+  &__container
     width: 100%
     height: 100%
 
-    position: fixed
-    top: 0
-    left: 0
+    display: flex
+    justify-content: center
+    align-items: center
 
-    background-color: transparent
-    border: vars.$red solid 0px
-    border-radius: 50px
-    &-cover
+    position: relative
+
+    transition: all .3s ease-in-out 0s
+    > .preloader__logo
+      > .preloaderH
+        @extend %horizontalPreloader
+      > .preloaderV
+        @extend %verticalPreloader
+    > .preloader__border
       width: 100%
       height: 100%
 
       position: fixed
-      top: 0
-      left: 0
 
       background-color: transparent
-      border: vars.$red solid 0px
 
-#LogoSlide
-  width: 100px
-  height: 100px
+      border-color: vars.$red
+      border-style: solid
+      border-width: 0px
 
-#logotexthorizontal
-  transform: translate(60px, 40px)
+      border-radius: 50px
+      & > .preloader__border-cover
+        width: 100%
+        height: 100%
 
-.hidden
+        position: fixed
+        top: 0
+        left: 0
+
+        background-color: transparent
+
+        border-color: vars.$red
+        border-style: solid
+        border-width: 0px
+  &__slide
+    position: fixed
+
+[data-status="visible"]
+  opacity: 1
+  visibility: visible
+  
+[data-status="hidden"]
   opacity: 0
   visibility: hidden
+
+[data-status="block"]
+  display: block
+
+[data-status="none"]
+  display: none
+
+[data-status="hold"]
+  background-color: transparent

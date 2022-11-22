@@ -1,7 +1,7 @@
 
 const theme = document.querySelector('.theme')
-const border = theme.querySelector('#border')
-const circle = theme.querySelector('#circle')
+const border = theme.querySelector('#borderTheme')
+const circle = theme.querySelector('#circleTheme')
 
 const lock = () => {
   theme.dataset.mask = true
