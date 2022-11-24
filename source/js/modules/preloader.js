@@ -11,6 +11,14 @@ const $preloaderContainer = document.getElementById('preloaderContainer')
 const $preloaderHorizontal = document.getElementById('preloaderH')
 const $preloaderVertical = document.getElementById('preloaderV')
 
+export const preloaderAnimationTiming = {
+  showPreloader: 500,
+  hidePreloader: 3000,
+  endPreloader: 5000,
+  showSlide: 2000,
+  endSlide: 4000
+}
+
 function preloaderSlide() {
 
   const $logo = document.getElementById('logo')
@@ -59,29 +67,23 @@ function preloaderSlide() {
       dimensions(true)
     }
     window.addEventListener('resize', resizeObserver)
+    setTimeout(() => window.removeEventListener('resize', resizeObserver), preloaderAnimationTiming.hidePreloader)
 
-    setTimeout(() => $logoSlide.style.display = 'block', 2000)
+    setTimeout(() => $logoSlide.style.display = 'block', preloaderAnimationTiming.showSlide)
     setTimeout(() => {
       $logoSlide.style.display = 'none'
       $logo.style.display = 'block'
-    }, 5000)
+    }, preloaderAnimationTiming.endPreloader)
   }
 
   const { logoDimensions } = dimensions(false)
-
   const logoSlideAnimation = () => {
-    console.log(logoDimensions, 'sync')
-
-    gsap.to($logoSlide, { delay: 3.1, duration: 1.2, ease: "power4.out", top: logoDimensions.top, left: logoDimensions.left })
-    gsap.to($logoSlideImage, { delay: 3.1, duration: 1.2, ease: "power4.out", width: logoDimensions.width, height: logoDimensions.height })
-
-    const resizeObserver = (event) => {
+    gsap.to($logoSlide, { delay: 3.1, duration: 1, ease: "power4.out", top: logoDimensions.top, left: logoDimensions.left })
+    gsap.to($logoSlideImage, { delay: 3.1, duration: 1, ease: "power4.out", width: logoDimensions.width, height: logoDimensions.height })
+    setTimeout(() => {
       const { logoDimensions } = dimensions(false)
-      console.log(logoDimensions, 'async')
-      gsap.to($logoSlideImage, { delay: 3.1, duration: .1, ease: "power4.out", width: logoDimensions.width, height: logoDimensions.height })
-    }
-    window.addEventListener('resize', resizeObserver)
-
+      gsap.to($logoSlideImage, { duration: 1, ease: "power4.out", width: logoDimensions.width, height: logoDimensions.height })
+    }, preloaderAnimationTiming.endSlide)
   }
 
   logoSlideSetting()
@@ -117,7 +119,7 @@ export function preloader() {
     setTimeout(() => {
       preloaderType ? logoTextHAnimation() : logoTextVAnimation()
       borderAnimation()
-    }, 500)
+    }, preloaderAnimationTiming.showPreloader)
 
   }
 
@@ -129,5 +131,5 @@ export function preloader() {
 export function hidePreloader() {
   $preloaderContainer.dataset.status = 'hidden'
   $preloader.dataset.status = 'hold'
-  setTimeout(() => $preloader.dataset.status = 'none', 2000)
+  setTimeout(() => $preloader.dataset.status = 'none', preloaderAnimationTiming.showSlide)
 }

@@ -2,7 +2,7 @@ import engineScroll from './modules/engineScroll.js'
 import { deviceDetection } from './modules/deviceDetection.js'
 import { menuInterface } from './modules/menuInterface.js'
 import { logoAnimation } from './animation/logos/logo.js'
-import { preloader, hidePreloader } from './modules/preloader.js'
+import { preloader, hidePreloader, preloaderAnimationTiming } from './modules/preloader.js'
 
 function index() {
 
@@ -15,7 +15,7 @@ function index() {
   setTimeout(() => {
     engineScroll()
     hidePreloader()
-  }, 3000)
+  }, preloaderAnimationTiming.hidePreloader)
 
 }
 
