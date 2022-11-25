@@ -15,7 +15,7 @@ export const preloaderAnimationTiming = {
   showPreloader: 500,
   hidePreloader: 3000,
   endPreloader: 5000,
-  showSlide: 2000,
+  showSlide: 2500,
   endSlide: 4000
 }
 
@@ -32,7 +32,9 @@ function preloaderSlide() {
     $preloaderLogo = document.getElementById('ltv-logo')
   }
 
-  const dimensions = (isExec) => {
+  // Getting logo dimensions
+  // Получение размера логотипов
+  const dimensions = () => {
 
     const logoDimensions = {
       width: $logo.getBoundingClientRect().width,
@@ -40,7 +42,6 @@ function preloaderSlide() {
       top: $logo.getBoundingClientRect().top,
       left: $logo.getBoundingClientRect().left
     }
-
     const preloaderLogoDimensions = {
       width: $preloaderLogo.getBoundingClientRect().width,
       height: $preloaderLogo.getBoundingClientRect().height,
@@ -48,40 +49,63 @@ function preloaderSlide() {
       left: $preloaderLogo.getBoundingClientRect().left
     }
 
-    if (!isExec) return { logoDimensions, preloaderLogoDimensions }
-
-    $logoSlide.style.top = ` ${preloaderLogoDimensions.top}px `
-    $logoSlide.style.left = ` ${preloaderLogoDimensions.left}px `
-    $logoSlideImage.style.width = ` ${preloaderLogoDimensions.width}px `
-    $logoSlideImage.style.height = ` ${preloaderLogoDimensions.height}px `
+    return { logoDimensions, preloaderLogoDimensions }
 
   }
 
+  // Setting sliding logo instruction
+  // Настройка инструкции по скольжению логотипа
   const logoSlideSetting = () => {
+
+    // Setting initial logo state
+    // Установка начального состояния логотипа
     $logo.style.opacity = 0
     $logoSlide.style.display = 'none'
 
-    dimensions(true)
-
-    const resizeObserver = (event) => {
-      dimensions(true)
+    // Asynchronous resize observer listening for screen size changing and updates dimensions
+    // Асинхронный изменение размера наблюдатель прослушивает изменение размера экрана и обновляет размеры
+    const resizeObserver = () => {
+      const { preloaderLogoDimensions } = dimensions()
+      $logoSlide.style.top = ` ${preloaderLogoDimensions.top}px `
+      $logoSlide.style.left = ` ${preloaderLogoDimensions.left}px `
+      $logoSlideImage.style.width = ` ${preloaderLogoDimensions.width}px `
+      $logoSlideImage.style.height = ` ${preloaderLogoDimensions.height}px `
     }
+
+    // Setting synchronous dimensions for slide image
+    // Установка синхронных размеров для лого слайда
+    resizeObserver()
+    
+    // Adding resize observer listener
+    // Добавление изменяющего размеры слушателя
     window.addEventListener('resize', resizeObserver)
+    // Removing resize observer listener
+    // Удаление изменяющего размеры слушателя
     setTimeout(() => window.removeEventListener('resize', resizeObserver), preloaderAnimationTiming.hidePreloader)
 
+    // Adding resize observer listener for mobile device
+    // Добавление изменяющего размеры слушателя для телефонов
+    window.addEventListener('orientationchange', resizeObserver)
+    // Removing resize observer listener for mobile device
+    // Удаление изменяющего размеры слушателя для телефонов
+    setTimeout(() => window.removeEventListener('orientationchange', resizeObserver), preloaderAnimationTiming.hidePreloader)
+
+    // Updating logo state
+    // Обновление состояния логотипа
     setTimeout(() => $logoSlide.style.display = 'block', preloaderAnimationTiming.showSlide)
     setTimeout(() => {
       $logoSlide.style.display = 'none'
       $logo.style.opacity = 1
     }, preloaderAnimationTiming.endPreloader)
+
   }
 
-  const { logoDimensions } = dimensions(false)
+  const { logoDimensions } = dimensions()
   const logoSlideAnimation = () => {
     gsap.to($logoSlide, { delay: 3.1, duration: 1, ease: "power4.out", top: logoDimensions.top, left: logoDimensions.left })
     gsap.to($logoSlideImage, { delay: 3.1, duration: 1, ease: "power4.out", width: logoDimensions.width, height: logoDimensions.height })
     setTimeout(() => {
-      const { logoDimensions } = dimensions(false)
+      const { logoDimensions } = dimensions()
       gsap.to($logoSlideImage, { duration: 1, ease: "power4.out", width: logoDimensions.width, height: logoDimensions.height })
     }, preloaderAnimationTiming.endSlide)
   }
