@@ -58,7 +58,7 @@ function preloaderSlide() {
   }
 
   const logoSlideSetting = () => {
-    $logo.style.display = 'none'
+    $logo.style.opacity = 0
     $logoSlide.style.display = 'none'
 
     dimensions(true)
@@ -72,7 +72,7 @@ function preloaderSlide() {
     setTimeout(() => $logoSlide.style.display = 'block', preloaderAnimationTiming.showSlide)
     setTimeout(() => {
       $logoSlide.style.display = 'none'
-      $logo.style.display = 'block'
+      $logo.style.opacity = 1
     }, preloaderAnimationTiming.endPreloader)
   }
 
