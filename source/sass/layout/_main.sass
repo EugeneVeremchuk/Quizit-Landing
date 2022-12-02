@@ -1,5 +1,9 @@
 
+@use "sass:math"
+
 @use "../base/_variables.sass" as vars
+@use "../base/_utilities.sass" as utils
+@use "../base/_grid.sass" as grid
 
 $gap: 30px
 $position: 2
@@ -36,13 +40,16 @@ $index: calc(1vw + 1vh)
 .frame
   width: 100%
   height: 100%
+
   position: absolute
+
   display: flex
   justify-content: center
   align-items: center
+
   transition: transform .75s vars.$scroll, opacity .75s ease
-  will-change: transform
   transform-style: preserve-3d
+  will-change: transform
   &-bg
     background-color: rgba(vars.$dark, .6)
   &-solid
@@ -75,41 +82,17 @@ $index: calc(1vw + 1vh)
     &_text
       position: relative
       .main-title
-        font-size: vars.$mainTitle
+        @include utils.adaptiveValue("font-size", vars.$mainTitle, math.div(vars.$mainTitle, 2), 0, grid.$maxWidth)
       .title
-        font-size: vars.$mainTitle
-        margin: 0px 0px vars.$titleSpace 0px
+        @include utils.adaptiveValue("font-size", vars.$mainTitle, math.div(vars.$mainTitle, 2), 0, grid.$maxWidth)
+        @include utils.adaptiveValue("margin-bottom", vars.$titleSpace, math.div(vars.$titleSpace, 2), 0, grid.$maxWidth)
       .subtitle
-        font-size: vars.$text
+        @include utils.adaptiveValue("font-size", vars.$text, math.div(vars.$text, 2), 0, grid.$maxWidth)
       .li
-        font-size: vars.$text
+        @include utils.adaptiveValue("font-size", vars.$text, math.div(vars.$text, 2), 0, grid.$maxWidth)
         list-style-type: disc
         &:not(:last-child)
           margin: 0px 0px 8px 0px
-      .button
-        position: relative
-        left: 0
-        top: 100px
-
-        display: inline-block
-
-        background-color: vars.$dark
-        font-size: vars.$textButton
-        font-weight: 900
-        text-transform: uppercase
-        border: vars.$buttonBorder solid var(--color)
-        border-radius: 30px
-        padding: 15px 35px
-        &__border
-          position: absolute
-          z-index: -1
-
-          width: 104%
-          height: 113%
-
-          border-radius: 30px
-
-          background-color: var(--color)
 
 .tc
   text-align: center
