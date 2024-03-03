@@ -9,7 +9,7 @@
     "build": "gulp build --build",
     "zip": "gulp archive --build"
   },
-  "author": "EugeneVeremchuk",
+  "author": "Yevhen Veremchuk",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.27.10",
